@@ -12,6 +12,22 @@
 						contacto@ecovivedyc.com
 					</address>
 				</div>
+				<div class="col-sm-8 col-ms-7 col-xs-12">
+					<div class="row">
+						<h3>Contáctanos</h3>
+						<form action="" method="post">
+							<div class="col-sm-6">
+								<label for="Nambe">¿Cuál es su nombre?</label> <input type="text" name="nombre" />
+								<label for="Nambe">¿Cuál es su correo?</label> <input type="text" name="corre" />
+								<label for="Nambe">¿Cuál es su teléfono?</label> <input type="text" name="telefono" />
+							</div>
+							<div class="col-sm-6">
+								<label for="Nambe">¿Cuál es su mensaje?</label> <textarea name="Comentario" id="" cols="30" rows="10"></textarea>
+								<input type="submit"  value="Enviar mensaje">
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
