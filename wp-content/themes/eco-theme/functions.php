@@ -12,6 +12,8 @@ function register_plugin_styles() {
 	wp_enqueue_style( 'bootstrap' );
 	wp_register_script( 'bs-js', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js' );
 	wp_enqueue_script( 'bs-js'); 
+	wp_register_style( 'fuentes', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css' );
+	wp_enqueue_style( 'fuentes' );	
 	wp_register_style( 'global', get_template_directory_uri().'/eco-style/stylesheets/global.css' );
 	wp_enqueue_style( 'global' );
 }
