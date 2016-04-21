@@ -16,6 +16,10 @@ function register_plugin_styles() {
 	wp_enqueue_style( 'fuentes' );	
 	wp_register_style( 'global', get_template_directory_uri().'/eco-style/stylesheets/global.css' );
 	wp_enqueue_style( 'global' );
+	if(is_front_page()){
+		wp_register_style( 'home', get_template_directory_uri().'/eco-style/stylesheets/home.css' );
+		wp_enqueue_style( 'home' ); 
+	}
 }
 
 function register_my_menu() {

@@ -1,18 +1,41 @@
 <footer>
+	<div class="brands">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<h3>Trabajamos con las más nuevas y ecologicas tecnologías</h3>
+				</div>
+			</div>
+			<div class="row special-p">
+				<div class="col-sm-3 col-ms-4 col-xs-6">
+					<img src="<?php echo get_template_directory_uri();?>/assets/images/espacios-inteligentes.png" alt="" class="img-responsive">
+				</div>
+				<div class="col-sm-3 col-ms-4 col-xs-6">
+					<img src="<?php echo get_template_directory_uri();?>/assets/images/innover.png" alt="" class="img-responsive">
+				</div>
+				<div class="col-sm-3 col-ms-4 col-xs-6">
+					<img src="<?php echo get_template_directory_uri();?>/assets/images/decorstreet.png" alt="" class="img-responsive">
+				</div>
+				<div class="col-sm-3 col-ms-4 col-xs-6">
+					<img src="<?php echo get_template_directory_uri();?>/assets/images/era.png" alt="" class="img-responsive">
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="contacto">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-4 col-ms-5 col-xs-12">
-					<img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-footer.png" alt="EcoVive D&C">
-					<address>
-						 01 443 3 24 77 70 ext. 201 <br/>
-
-						Av. Acueducto #95 Int. 301 Colonia Vasco de Quiroga, C.P. 58230 Morelia Michoacán<br/>
-
-						contacto@ecovivedyc.com
-					</address>
+					<div class="info_contacto">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-footer.png" alt="EcoVive D&C" class="img-responsive">
+						<address>
+							<p>01 443 3 24 77 70 ext. 201</p>
+							<p>Av. Acueducto #95 Int. 301 Colonia Vasco de Quiroga, C.P. 58230 Morelia Michoacán</p>
+							<p>contacto@ecovivedyc.com</p>
+						</address>						
+					</div>
 				</div>
-				<div class="col-sm-8 col-ms-7 col-xs-12">
+				<div class="col-sm-8 col-ms-7 col-xs-12 bg-green">
 					<div class="row">
 						<h3>Contáctanos</h3>
 						<form action="" method="post">
@@ -23,7 +46,7 @@
 							</div>
 							<div class="col-sm-6">
 								<label for="Nambe">¿Cuál es su mensaje?</label> <textarea name="Comentario" id="" cols="30" rows="10"></textarea>
-								<input type="submit"  value="Enviar mensaje">
+								<button type="submit" >Enviar mensaje</button>
 							</div>
 						</form>
 					</div>
