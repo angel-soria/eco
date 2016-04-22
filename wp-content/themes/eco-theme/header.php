@@ -10,7 +10,7 @@
 	<div class="header">
 		<div class="container">
 			<div class="row">
-				<div class="col-xs-6 col-sm-4 col-lg-3 col-ms-5">
+				<div class="col-xs-8 col-sm-4 col-lg-3 col-ms-5">
 					<img src="<?php echo get_template_directory_uri();?>/assets/images/logo.png" alt="EcoVive D & C" class="img-responsive">
 				</div>
 				<div class="col-sm-8 hidden-xs col-lg-9 col-ms-7">

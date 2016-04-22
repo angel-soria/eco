@@ -6,17 +6,17 @@
 					<h3>Trabajamos con las más nuevas y ecologicas tecnologías</h3>
 				</div>
 			</div>
-			<div class="row special-p">
-				<div class="col-sm-3 col-ms-4 col-xs-6">
+			<div class="row special-p row-centered">
+				<div class="col-sm-3 col-ms-4 col-xs-6  col-centered">
 					<img src="<?php echo get_template_directory_uri();?>/assets/images/espacios-inteligentes.png" alt="" class="img-responsive">
 				</div>
-				<div class="col-sm-3 col-ms-4 col-xs-6">
+				<div class="col-sm-3 col-ms-4 col-xs-6 col-centered">
 					<img src="<?php echo get_template_directory_uri();?>/assets/images/innover.png" alt="" class="img-responsive">
 				</div>
-				<div class="col-sm-3 col-ms-4 col-xs-6">
+				<div class="col-sm-3 col-ms-4 col-xs-6 col-centered">
 					<img src="<?php echo get_template_directory_uri();?>/assets/images/decorstreet.png" alt="" class="img-responsive">
 				</div>
-				<div class="col-sm-3 col-ms-4 col-xs-6">
+				<div class="col-sm-3 col-ms-4 col-xs-6 col-centered">
 					<img src="<?php echo get_template_directory_uri();?>/assets/images/era.png" alt="" class="img-responsive">
 				</div>
 			</div>
@@ -44,7 +44,7 @@
 								<label for="Nambe">¿Cuál es su correo?</label> <input type="text" name="corre" />
 								<label for="Nambe">¿Cuál es su teléfono?</label> <input type="text" name="telefono" />
 							</div>
-							<div class="col-sm-6">
+							<div class="col-sm-6 xs-p">
 								<label for="Nambe">¿Cuál es su mensaje?</label> <textarea name="Comentario" id="" cols="30" rows="10"></textarea>
 								<button type="submit" >Enviar mensaje</button>
 							</div>

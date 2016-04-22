@@ -343,6 +343,7 @@ a.general{
 	font-weight:400;
 	font-size:16px;
 	overflow:hidden;
+	line-height: 1.2;
 	&:after {
 	  content: "";
 	  position: absolute;
@@ -424,8 +425,17 @@ a.general{
 			}
 		}
 	}
+	footer .contacto .info_contacto address p {
+    	font-size: 22px;
+	}
 }
 @media only screen and (max-width : 992px) { 
+	footer .contacto .bg-green .row label {
+		font-size:18px;
+	}
+	footer .contacto .info_contacto address p {
+    	font-size: 18px;
+	}
 	.header__menu{
 		padding-top: 22px;
 		ul{
@@ -475,6 +485,23 @@ footer {
 			}
 		}
 	}
+	footer .contacto .bg-green .row textarea {
+   		max-height:80px;
+    }
+    footer .contacto .bg-green .row h3 {
+	   	font-size: 24px;
+	   	margin-bottom: 16px;
+	}
+	footer .contacto .bg-green .row input, footer .contacto .bg-green .row textarea{
+		margin-bottom:10px;
+		padding:8px;
+	}
+	.xs-p{
+		padding-left:0px ; 
+	}
+	footer .contacto .info_contacto address p {
+    	font-size: 15px;
+	}
 }
 @media only screen and (max-width : 480px) {
 	footer {
@@ -483,6 +510,15 @@ footer {
 				text-align: center;
 			}
 		}
+	}
+	footer .contacto .bg-green .row {
+   	 	padding: 35px 0px 0px 15px;
+	}
+	footer .contacto{
+		background:#ebebeb;
+	}
+	footer .contacto .info_contacto {
+    	padding: 40px 35px 20px 0px;
 	}
 }
 
