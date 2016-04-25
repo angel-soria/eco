@@ -51,7 +51,7 @@ function create_posttype() {
       ),
       'public' => true,
       'has_archive' => true,
-      'rewrite' => array('slug' => 'ideas'),
+      'rewrite' => array('slug' => 'desarrollos/%categoria-ideas%', 'with_front' => false),
       'menu_icon' =>'dashicons-lightbulb'
     )
   );
@@ -69,6 +69,15 @@ function create_book_tax() {
 			'hierarchical' => true,
 		)
 	);
+  register_taxonomy(
+    'categoria-ideas',
+    'ideas',
+    array(
+      'label' => __( 'Categoria' ),
+      'rewrite' => array( 'slug' => 'ideas' ),
+      'hierarchical' => true,
+    )
+  );
 }
 
 
@@ -208,4 +217,25 @@ function brand_permalink($permalink, $post_id, $leavename) {
         else $taxonomy_slug = 'no-brand';
 
     return str_replace('%categoria-desarrollos%', $taxonomy_slug, $permalink);
+}
+
+
+/*Filtro per modificare il permalink*/
+add_filter('post_link', 'ideas_permalink', 1, 3);
+add_filter('post_type_link', 'ideas_permalink', 1, 3);
+
+function ideas_permalink($permalink, $post_id, $leavename) {
+  //con %brand% catturo il rewrite del Custom Post Type
+    if (strpos($permalink, '%categoria-ideas%') === FALSE) return $permalink;
+        // Get post
+        $post = get_post($post_id);
+        if (!$post) return $permalink;
+
+        // Get taxonomy terms
+        $terms = wp_get_object_terms($post->ID, 'categoria-ideas');
+        if (!is_wp_error($terms) && !empty($terms) && is_object($terms[0]))
+          $taxonomy_slug = $terms[0]->slug;
+        else $taxonomy_slug = 'ideas';
+
+    return str_replace('%categoria-ideas%', $taxonomy_slug, $permalink);
 }
