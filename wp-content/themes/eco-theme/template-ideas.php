@@ -4,20 +4,33 @@
  *
  */
 get_header(); ?>
-	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); $link= get_permalink( ); ?>
 		<div class="banner">
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12">
 						<h3><?php echo get_the_content( ); ?></h3>
-						<div><a href="<?php echo get_home_url(); ?>">Home</a> > <h1><?php echo get_the_title(); ?></h1> </div>
+						<div class="breadcrumb-list"><a href="<?php echo get_home_url(); ?>">Home</a> > <h1><?php echo get_the_title(); ?></h1> </div>
 					</div>
 				</div>
 			</div>
 		</div>
 	<?php endwhile; endif; ?>
-<div class="desarrollos-ficha">
+	<div class="desarrollos-ficha">
 	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<ul class="menu-interior">
+					<li><a href="<?php echo $link;?>" class="active">Todos</a></li>
+					<?php 
+						$terms = get_terms( array('taxonomy' => 'categoria-ideas','hide_empty' => false,) );
+					 	foreach ( $terms as $term ) {
+        					echo '<li><a href="' . esc_url( get_term_link( $term ) ) . '">' . $term->name . '</a></li>';
+    					} 
+    				?>					
+				</ul>
+			</div>
+		</div>
 		<div class="row">
 		<?php for ($i=0; $i < 6; $i++) { ?>
 			
@@ -41,13 +54,16 @@ get_header(); ?>
 		</div>
 		<div class="row ">
 			<div class="col-xs-12">
-				<ul class="pagination">
-				  <li><a href="#">1</a></li>
-				  <li><a href="#">2</a></li>
-				  <li><a href="#">3</a></li>
-				  <li><a href="#">4</a></li>
-				  <li><a href="#">5</a></li>
-				</ul>
+				<div class="content-pagination">
+					<ul class="pagination">
+					  <li><a href="#">1</a></li>
+					  <li><a href="#">2</a></li>
+					  <li><a href="#">3</a></li>
+					  <li><a href="#">4</a></li>
+					  <li><a href="#">5</a></li>
+					</ul>
+					
+				</div>
 			</div>
 		</div>
 	</div>

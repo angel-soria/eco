@@ -512,7 +512,67 @@ a.general{
 		margin-bottom:40px;
 	}
 }
-
+.banner{
+	padding:70px 0 50px;
+	background-size: cover;
+	background-image: url("../../assets/images/ideas-destacada.jpg");
+  	background-repeat: no-repeat;
+  	background-attachment: fixed;
+  	h3{
+  		color: white;
+	    font-size: 50px;
+	    font-weight: 800;
+	    margin-bottom: 32px;
+	    white-space: pre-wrap;
+	    line-height: 1;
+  	}
+  	.breadcrumb-list{
+  		color:white;
+  		text-transform:uppercase;
+  		font-weight:800;
+  		h1{
+  			display:inline-block;
+  		}
+  		a{
+  			color: white;
+  			&:hover{
+  				text-decoration:underline;
+  			}
+  		}
+  	}
+}
+.menu-interior{
+	margin-bottom:25px;
+	li{
+		display:inline-block;
+		margin-right:25px;
+		margin-bottom:20px;
+		&:last-child{
+			margin-right:0px;
+		}
+		a{
+			color: rgba(67,67,67,1);
+			font-weight:500;
+			text-transform:uppercase;
+			&.active, &:hover{
+				color:rgba(117,192,43,1);
+				font-weight:600;
+				text-decoration:none;
+			}
+		}
+	}
+}
+.content-pagination{
+	text-align:center;
+	a{
+		color: rgba(67,67,67,1) !important;
+		&:hover, &.active, &.current{
+			background:rgba(117,192,43,1) !important;
+			font-weight:600;
+			color:white !important;
+		}
+	}
+}
 @media only screen and (min-width : 320px) {
 
 }
@@ -551,7 +611,10 @@ a.general{
     	font-size: 22px;
 	}
 }
-@media only screen and (max-width : 992px) { 
+@media only screen and (max-width : 992px) {
+	.banner h3{
+		font-size:36px;
+	} 
 	footer .contacto .bg-green .row label {
 		font-size:18px;
 	}
@@ -594,6 +657,13 @@ a.general{
 	}
 }
 @media only screen and (max-width : 768px) {
+	.banner h3{
+		font-size:30px;
+		line-height:1.2;
+	}
+	.banner {
+    	padding: 35px 0 40px;
+	}
 footer {
 		.pie{
 			ul{

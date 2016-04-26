@@ -40,7 +40,7 @@ function create_posttype() {
       'has_archive' => true,
       'rewrite' => array('slug' => 'desarrollos/%categoria-desarrollos%', 'with_front' => false),
       'menu_icon'=>'dashicons-building',
-       'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt',  )
+      'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt',  )
     )
   );
   register_post_type( 'ideas',
@@ -52,7 +52,8 @@ function create_posttype() {
       'public' => true,
       'has_archive' => true,
       'rewrite' => array('slug' => 'desarrollos/%categoria-ideas%', 'with_front' => false),
-      'menu_icon' =>'dashicons-lightbulb'
+      'menu_icon' =>'dashicons-lightbulb',
+      'supports' => array( 'title', 'editor', 'thumbnail', )
     )
   );
 }
