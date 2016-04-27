@@ -1,7 +1,7 @@
 @import "compass/css3"; 
 @import "compass/utilities";
 @import url(http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
-@import url(https://file.myfontastic.com/pBcVEBociPSPL3JLYT4RMf/icons.css);
+@import url(https://file.myfontastic.com/CwGUj2jVF7mYRADZgJdBp/icons.css);
 $green: #649c47;
 .carrusel{
 	.carousel-indicators {
@@ -202,14 +202,29 @@ $green: #649c47;
 				font-size:15px;
 				margin-top:15px;
 				margin-bottom:6px;
+				a{
+					color:rgba(92,92,92,1);
+					&:hover{
+						text-decoration:none;
+						color: #75c02b;
+					}
+				}
 			}
-			h3{
+			h3, h1{
 				font-weight:600;
 				color: rgba(92,92,92,1);
 				font-size:20px;
 				line-height:1.1;
 				margin-bottom:10px;
 			}
+		}
+		.compartir{
+			padding: 0px 0 25px;
+		    text-align: right;
+		    padding-right: 50px;
+		    .fb_iframe_widget{
+		    	top:-3px;
+		    }
 		}
 		ul{
 			text-align: center;
@@ -297,6 +312,14 @@ $green: #649c47;
 	}
 
 }
+.relacionados{
+	padding: 0px 0 15px;
+	h2{
+		font-size:24px;
+		text-align:left;
+		margin-bottom:25px;
+	}
+}
 
 .paquetes{
 	padding:55px 0 65px;
@@ -342,6 +365,96 @@ $green: #649c47;
 	}
 }
 
+.contenido-post{
+	p, ol, ul, div, iframe{
+		margin-bottom:26px;
+	}
+	ol{
+		list-style: initial;
+	    list-style-type: decimal;
+	    padding-left: 45px;
+	}
+	ul{
+		list-style: initial;
+	    list-style-type: disc;
+	    padding-left: 45px;
+	}
+	.alignnone {
+		    margin: 5px 20px 20px 0;
+		}
+
+		.aligncenter,
+		div.aligncenter {
+		    display: block;
+		    margin: 5px auto 5px auto;
+		}
+
+		.alignright {
+		    float:right;
+		    margin: 5px 0 20px 20px;
+		}
+
+		.alignleft {
+		    float: left;
+		    margin: 5px 20px 20px 0;
+		}
+
+		a img.alignright {
+		    float: right;
+		    margin: 5px 0 20px 20px;
+		}
+
+		a img.alignnone {
+		    margin: 5px 20px 20px 0;
+		}
+
+		a img.alignleft {
+		    float: left;
+		    margin: 5px 20px 20px 0;
+		}
+
+		a img.aligncenter {
+		    display: block;
+		    margin-left: auto;
+		    margin-right: auto
+		}
+
+		.wp-caption {
+		    background: #fff;
+		    border: 1px solid #f0f0f0;
+		    max-width: 96%; /* Image does not overflow the content area */
+		    padding: 5px 3px 10px;
+		    text-align: center;
+		}
+
+		.wp-caption.alignnone {
+		    margin: 5px 20px 20px 0;
+		}
+
+		.wp-caption.alignleft {
+		    margin: 5px 20px 20px 0;
+		}
+
+		.wp-caption.alignright {
+		    margin: 5px 0 20px 20px;
+		}
+
+		.wp-caption img {
+		    border: 0 none;
+		    height: auto;
+		    margin: 0;
+		    max-width: 98.5%;
+		    padding: 0;
+		    width: auto;
+		}
+
+		.wp-caption p.wp-caption-text {
+		    font-size: 11px;
+		    line-height: 17px;
+		    margin: 0;
+		    padding: 0 4px 5px;
+		}
+}
 @media only screen and (max-width : 1200px) {
 	.desarrollos-ficha .ficha ul li span.texto {
 	    display: block;

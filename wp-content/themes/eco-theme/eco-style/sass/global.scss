@@ -573,6 +573,24 @@ a.general{
 		}
 	}
 }
+.tipo-lista{
+	text-align:right;
+	a{
+		color:white;
+		background:#aac59e;
+		text-align:center;
+		padding:9px;
+		margin-left:5px;
+		&:hover{
+			background:#75c02b;
+			text-decoration:none;
+		}
+		i{
+			vertical-align: middle;
+			font-size: 20px;
+		}
+	}
+}
 @media only screen and (min-width : 320px) {
 
 }

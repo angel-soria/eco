@@ -772,150 +772,173 @@ a.general:hover:after {
   color: white !important;
 }
 
+/* line 576, ../sass/global.scss */
+.tipo-lista {
+  text-align: right;
+}
+/* line 578, ../sass/global.scss */
+.tipo-lista a {
+  color: white;
+  background: #aac59e;
+  text-align: center;
+  padding: 9px;
+  margin-left: 5px;
+}
+/* line 584, ../sass/global.scss */
+.tipo-lista a:hover {
+  background: #75c02b;
+  text-decoration: none;
+}
+/* line 588, ../sass/global.scss */
+.tipo-lista a i {
+  vertical-align: middle;
+  font-size: 20px;
+}
+
 @media only screen and (max-width: 1200px) {
-  /* line 586, ../sass/global.scss */
+  /* line 604, ../sass/global.scss */
   .header__menu {
     padding-top: 32px;
   }
-  /* line 589, ../sass/global.scss */
+  /* line 607, ../sass/global.scss */
   .header__menu ul a {
     padding: 0 10px;
     font-size: 15px;
   }
 
-  /* line 598, ../sass/global.scss */
+  /* line 616, ../sass/global.scss */
   footer .pie ul li {
     display: inline-block;
     list-style: outside none none;
     padding: 0;
     margin: 0 13px 0 0;
   }
-  /* line 605, ../sass/global.scss */
+  /* line 623, ../sass/global.scss */
   footer .pie p {
     font-size: 21px;
   }
 
-  /* line 610, ../sass/global.scss */
+  /* line 628, ../sass/global.scss */
   footer .contacto .info_contacto address p {
     font-size: 22px;
   }
 }
 @media only screen and (max-width: 992px) {
-  /* line 615, ../sass/global.scss */
+  /* line 633, ../sass/global.scss */
   .banner h3 {
     font-size: 36px;
   }
 
-  /* line 618, ../sass/global.scss */
+  /* line 636, ../sass/global.scss */
   footer .contacto .bg-green .row label {
     font-size: 18px;
   }
 
-  /* line 621, ../sass/global.scss */
+  /* line 639, ../sass/global.scss */
   footer .contacto .info_contacto address p {
     font-size: 18px;
   }
 
-  /* line 624, ../sass/global.scss */
+  /* line 642, ../sass/global.scss */
   .header__menu {
     padding-top: 22px;
   }
-  /* line 627, ../sass/global.scss */
+  /* line 645, ../sass/global.scss */
   .header__menu ul li {
     margin: 0px;
   }
-  /* line 630, ../sass/global.scss */
+  /* line 648, ../sass/global.scss */
   .header__menu ul a {
     padding: 0 4px;
     font-size: 14px;
   }
 
-  /* line 640, ../sass/global.scss */
+  /* line 658, ../sass/global.scss */
   footer .pie ul li {
     margin: 0 11px 0 0;
   }
-  /* line 642, ../sass/global.scss */
+  /* line 660, ../sass/global.scss */
   footer .pie ul li a {
     font-size: 25px;
     width: 40px;
     height: 40px;
   }
-  /* line 646, ../sass/global.scss */
+  /* line 664, ../sass/global.scss */
   footer .pie ul li a i {
     margin-top: 6px;
   }
-  /* line 652, ../sass/global.scss */
+  /* line 670, ../sass/global.scss */
   footer .pie p {
     font-size: 14px;
     padding-top: 12px;
   }
 }
 @media only screen and (max-width: 768px) {
-  /* line 660, ../sass/global.scss */
+  /* line 678, ../sass/global.scss */
   .banner h3 {
     font-size: 30px;
     line-height: 1.2;
   }
 
-  /* line 664, ../sass/global.scss */
+  /* line 682, ../sass/global.scss */
   .banner {
     padding: 35px 0 40px;
   }
 
-  /* line 670, ../sass/global.scss */
+  /* line 688, ../sass/global.scss */
   footer .pie ul li {
     margin: 0 1px 0 0;
   }
-  /* line 674, ../sass/global.scss */
+  /* line 692, ../sass/global.scss */
   footer .pie p {
     font-size: 14px;
     padding-top: 12px;
   }
 
-  /* line 680, ../sass/global.scss */
+  /* line 698, ../sass/global.scss */
   footer .contacto .bg-green .row textarea {
     max-height: 80px;
   }
 
-  /* line 683, ../sass/global.scss */
+  /* line 701, ../sass/global.scss */
   footer .contacto .bg-green .row h3 {
     font-size: 24px;
     margin-bottom: 16px;
   }
 
-  /* line 687, ../sass/global.scss */
+  /* line 705, ../sass/global.scss */
   footer .contacto .bg-green .row input, footer .contacto .bg-green .row textarea {
     margin-bottom: 10px;
     padding: 8px;
   }
 
-  /* line 691, ../sass/global.scss */
+  /* line 709, ../sass/global.scss */
   .xs-p {
     padding-left: 0px;
   }
 
-  /* line 694, ../sass/global.scss */
+  /* line 712, ../sass/global.scss */
   footer .contacto .info_contacto address p {
     font-size: 15px;
   }
 }
 @media only screen and (max-width: 480px) {
-  /* line 701, ../sass/global.scss */
+  /* line 719, ../sass/global.scss */
   footer .pie ul {
     text-align: center;
   }
 
-  /* line 706, ../sass/global.scss */
+  /* line 724, ../sass/global.scss */
   footer .contacto .bg-green .row {
     padding: 35px 0px 0px 15px;
   }
 
-  /* line 709, ../sass/global.scss */
+  /* line 727, ../sass/global.scss */
   footer .contacto {
     background: #ebebeb;
   }
 
-  /* line 712, ../sass/global.scss */
+  /* line 730, ../sass/global.scss */
   footer .contacto .info_contacto {
     padding: 40px 35px 20px 0px;
   }
