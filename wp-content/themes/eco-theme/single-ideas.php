@@ -46,27 +46,19 @@
 					  </div>
 					</div>
 					<div class="contenido">
-						<?php $term_list = wp_get_post_categories ($post->ID); ?>
+						<?php $term_list = wp_get_post_terms($post->ID, 'categoria-ideas', array("fields" => "all"));  ?>
 						<p><?php foreach ( $term_list as $term ) {
-								 $cat = get_category( $term );
-	        					echo '<a href="' . esc_url( get_category_link( $term ) ) . '">' . $cat->name . '</a> ';
+	        					echo '<a href="' . esc_url( get_term_link( $term ) ) . '">' . $term->name . '</a> ';
 	    					}  ?></p>
 						<h1><?php the_title();?></h1>
+						<div class="contenido-post"><?php the_content();?></div>
 					</div>
 					<div class="compartir">
 						<div class="fb-share-button" data-href="<?php echo get_the_permalink(); ?>" data-layout="button" data-mobile-iframe="true"></div>
 						<a href="https://twitter.com/share" class="twitter-share-button" data-text="<?php echo get_the_title(  ); ?>" data-via="AngelSoriaH" data-lang="es" data-hashtags="IdeasEcoVive" data-dnt="true">Twittear</a>
+						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 					</div>
 			</div>
-			<div class="contenido-single">
-				<?php the_content();?>
-				
-			</div>
-			<div class="compartir-single">
-						<div class="fb-share-button" data-href="<?php echo get_the_permalink(); ?>" data-layout="button" data-mobile-iframe="true"></div>
-						<a href="https://twitter.com/share" class="twitter-share-button" data-text="<?php echo get_the_title(  ); ?>" data-via="AngelSoriaH" data-lang="es" data-hashtags="IdeasEcoVive" data-dnt="true">Twittear</a>
-						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-				</div>
 		</div>
 	</div>
 </div>

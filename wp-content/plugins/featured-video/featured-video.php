@@ -20,7 +20,7 @@ add_shortcode( 'featured-video', 'fv_do_post_video' );
 function fv_meta_register(){
 	$post_types = get_post_types(array("public" => true));
 	foreach ($post_types as $post_type) {
-		add_meta_box("fv_meta", 'Featured video', "fv_meta_html", $post_type, "side", "low");
+		add_meta_box("fv_meta", 'Video Destacado', "fv_meta_html", $post_type, "side", "low");
 	}	
 		
 	wp_enqueue_style('fv_video_style', plugins_url().'/featured-video/style.css');
@@ -45,7 +45,7 @@ function fv_meta_html(){
 	$v_img = get_post_meta($post_id, 'fv_video_img', true);
 		
 	if($video == null){
-		$video = 'Paste your YouTube or Vimeo url';
+		$video = 'Pega la URL de Youtube o Vimeo';
 	}
 		
 	?>

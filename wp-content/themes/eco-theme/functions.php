@@ -1,5 +1,6 @@
 <?php
 add_theme_support( 'post-thumbnails' );
+add_image_size( 'ideas-slider', 1315, 645 , true);
 // Register style sheet.
 add_action( 'wp_enqueue_scripts', 'register_plugin_styles' );
 
@@ -15,12 +16,26 @@ function register_plugin_styles() {
 	wp_enqueue_script( 'bs-js'); 
 	wp_register_style( 'fuentes', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css' );
 	wp_enqueue_style( 'fuentes' );	
+
+ global $post_type;
+    if( $post_type == 'ideas' || is_single( )){
+      wp_register_style( 'fancy','https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.css' );
+      wp_enqueue_style( 'fancy' ); 
+      wp_register_script( 'fancy-js', 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.js' );
+      wp_enqueue_script( 'fancy-js');
+      wp_register_script( 'single-js', get_template_directory_uri().'/assets/js/single.js' );
+      wp_enqueue_script( 'single-js');
+    }
+
+
+
 	wp_register_style( 'global', get_template_directory_uri().'/eco-style/stylesheets/global.css' );
 	wp_enqueue_style( 'global' );
 	//if(is_front_page()){
 		wp_register_style( 'home', get_template_directory_uri().'/eco-style/stylesheets/home.css' );
 		wp_enqueue_style( 'home' ); 
 	//}
+   
 }
 
 function register_my_menu() {
@@ -51,7 +66,7 @@ function create_posttype() {
       ),
       'public' => true,
       'has_archive' => true,
-      'rewrite' => array('slug' => 'desarrollos/%categoria-ideas%', 'with_front' => false),
+      'rewrite' => array('slug' => 'ideas/%categoria-ideas%', 'with_front' => false),
       'menu_icon' =>'dashicons-lightbulb',
       'supports' => array( 'title', 'editor', 'thumbnail', )
     )

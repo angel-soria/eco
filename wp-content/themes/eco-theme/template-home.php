@@ -68,7 +68,7 @@ get_header(); ?>
 						<ul class="caracteristicas">
 							<li>
 								<span class="number">5</span>
-								<i class="icon-bed"></i>
+								<i class="icon-full-bed"></i>
 								<span class="texto">Recámaras</span>
 							</li>
 							<li>
@@ -83,7 +83,7 @@ get_header(); ?>
 							</li>
 							<li>
 								<span class="number">500 m<sup>2</sup> </span>
-								<i class="icon-rectngulo"></i>
+								<i class="icon-rectngulo-5"></i>
 								<span class="texto">Terreno</span>
 							</li>
 						</ul>

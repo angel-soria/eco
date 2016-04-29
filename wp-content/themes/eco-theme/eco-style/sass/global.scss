@@ -412,10 +412,16 @@ a.general{
 		margin-bottom:15px;
 	}
 }
-.contenido{
+.contenido, .contenido-single{
 	font-size:23px;
 	line-height: 1.28;
 	color: rgba(92,92,92,1);
+	strong{
+		font-weight:800;
+	}
+	em{
+		font-style:italic;
+	}
 	p, ol, ul, div, iframe{
 		margin-bottom:26px;
 	}
@@ -505,6 +511,18 @@ a.general{
 		    padding: 0 4px 5px;
 		}
 }
+.contenido-single{
+	font-size:18px;
+	margin-top:35px;
+}
+.compartir-single{
+			padding: 0px 0 25px;
+		    text-align: right;
+		    padding-right: 50px;
+		    .fb_iframe_widget{
+		    	top:-3px;
+		    }
+		}
 .pagina{
 	text-align: left;
 	h1{
@@ -588,6 +606,65 @@ a.general{
 		i{
 			vertical-align: middle;
 			font-size: 20px;
+		}
+	}
+}
+
+	.fancybox-type-iframe .fancybox-nav {
+    width: 60px;
+}
+.fancybox-type-iframe .fancybox-nav span {
+    visibility: visible;
+    opacity: 0.5;
+}
+.fancybox-type-iframe .fancybox-nav:hover span {
+    opacity: 1;
+}
+.fancybox-type-iframe .fancybox-next {
+    right: -60px;
+}
+.fancybox-type-iframe .fancybox-prev {
+    left: -60px;
+}
+.carousel-control{
+	background: white;
+    color: #649c47;
+    height: 100px;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    padding: 0;
+    width: 50px;
+    opacity:1;
+    background-image: none !important;
+    i{
+    	font-size: 45px;
+    	margin-top: 25px;
+    	display:block;
+    }
+    &:hover{
+    	background: #649c47;
+    	color:white;
+    }
+}
+#fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
+    background-image: url('../../assets/images/fancybox_sprite.png') !important;
+}
+a.fancybox{
+	&:hover{
+		&:before{
+		 font-family: "ecovive";
+		content: "\6f";
+		    width: 38px;
+    height: 36px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    font-size: 36px;
+    color:#649c47;
 		}
 	}
 }
