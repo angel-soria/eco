@@ -1,6 +1,7 @@
 <?php
 add_theme_support( 'post-thumbnails' );
 add_image_size( 'ideas-slider', 1315, 645 , true);
+
 // Register style sheet.
 add_action( 'wp_enqueue_scripts', 'register_plugin_styles' );
 
@@ -26,6 +27,14 @@ function register_plugin_styles() {
       wp_register_script( 'single-js', get_template_directory_uri().'/assets/js/single.js' );
       wp_enqueue_script( 'single-js');
     }
+    wp_register_script( 'modernizr-js', get_template_directory_uri().'/assets/js/modernizr.custom.js' );
+    wp_enqueue_script( 'modernizr-js');
+
+    wp_register_script( 'classie-js', get_template_directory_uri().'/assets/js/classie.js','','', true );
+    wp_enqueue_script( 'classie-js');
+
+    wp_register_script( 'general-js', get_template_directory_uri().'/assets/js/general.js', '','', true );
+    wp_enqueue_script( 'general-js');
 
 
 

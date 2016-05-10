@@ -26,6 +26,10 @@
 				<div class="col-sm-8 hidden-xs col-lg-9 col-ms-7">
 					<?php wp_nav_menu( array( 'theme_location' => 'header-menu', 'container_class' => 'header__menu' ) );?>
 				</div>
+				<div class="col-xs-4 col-ms-7 visible-xs">
+					<a id="showLeftPush"><i class="icon-burguer"></i></a>
+					<?php wp_nav_menu( array( 'theme_location' => 'header-menu','menu_id'=>'cbp-spmenu-s2', 'menu_class' => 'cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right' ) );?>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -1,6 +1,7 @@
 @import "compass/reset"; 
 @import "compass/css3"; 
 @import "compass/utilities";
+@import "menu";
 $light_gray : #ebebeb;
 $green: #649c47;
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,600,500,800);
@@ -599,8 +600,12 @@ a.general{
 		text-align:center;
 		padding:9px;
 		margin-left:5px;
+		padding-bottom:6px;
 		&:hover{
 			background:#75c02b;
+			text-decoration:none;
+		}
+		&:active{
 			text-decoration:none;
 		}
 		i{
