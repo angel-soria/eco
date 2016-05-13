@@ -1,6 +1,7 @@
 <?php
 add_theme_support( 'post-thumbnails' );
 add_image_size( 'ideas-slider', 1315, 645 , true);
+add_image_size( 'home-slider', 1440, 797 , true);
 
 // Register style sheet.
 add_action( 'wp_enqueue_scripts', 'register_plugin_styles' );
@@ -27,6 +28,7 @@ function register_plugin_styles() {
       wp_register_script( 'single-js', get_template_directory_uri().'/assets/js/single.js' );
       wp_enqueue_script( 'single-js');
     }
+   
     wp_register_script( 'modernizr-js', get_template_directory_uri().'/assets/js/modernizr.custom.js' );
     wp_enqueue_script( 'modernizr-js');
 
@@ -44,7 +46,15 @@ function register_plugin_styles() {
 		wp_register_style( 'home', get_template_directory_uri().'/eco-style/stylesheets/home.css' );
 		wp_enqueue_style( 'home' ); 
 	//}
-   
+
+ if( $post_type == 'desarrollos'){
+      wp_register_script( 'mapa-desarrollos-js', get_template_directory_uri().'/assets/js/desarrollos.js','','', true );
+      wp_enqueue_script( 'mapa-desarrollos-js');
+      wp_register_style( 'desarrollos-css', get_template_directory_uri().'/eco-style/stylesheets/desarrollos.css' );
+      wp_enqueue_style( 'desarrollos-css' ); 
+      wp_register_script( 'mapa-js', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCziOtxzjmnNtgvDp7JHzh_bsRwzOooV7U&callback=initialize','','', true );
+      wp_enqueue_script( 'mapa-js');
+    }   
 }
 
 function register_my_menu() {
@@ -78,6 +88,17 @@ function create_posttype() {
       'rewrite' => array('slug' => 'ideas/%categoria-ideas%', 'with_front' => false),
       'menu_icon' =>'dashicons-lightbulb',
       'supports' => array( 'title', 'editor', 'thumbnail', )
+    )
+  );
+  register_post_type( 'slider',
+    array(
+      'labels' => array(
+        'name' => __( 'Carrusel' ),
+        'singular_name' => __( 'Carrusel' )
+      ),
+      'public' => true,
+      'has_archive' => false,
+       'supports' => array( 'title', 'thumbnail')
     )
   );
 }
@@ -127,6 +148,7 @@ function metabox_desarrollos() {
 
     <!-- my custom value input -->
     <div>
+      ID Casa: <input type="text" name="id_casa" value="<?php echo (get_post_meta( get_the_ID(), 'id_casa', true ));?>">
 	    Recámaras: <input type="text" name="recamaras" value="<?php echo (get_post_meta( get_the_ID(), 'recamaras', true ));?>"> <br />
 	    Baños: <input type="text" name="banos" value="<?php echo (get_post_meta( get_the_ID(), 'banos', true ));?>"> <br />
 	    Estacionamieto: <input type="text" name="estacionamiento" value="<?php echo (get_post_meta( get_the_ID(), 'estacionamiento', true ));?>"> <br />
@@ -134,6 +156,7 @@ function metabox_desarrollos() {
     </div>
     <br>
     <h3>Ubicación</h3>
+    <input type="text" name="ubicacion" value="<?php echo (get_post_meta( get_the_ID(), 'ubicacion', true ));?>">
     <div id="map_canvas" style="width:100%; height:400px"></div>
 
   <div id="latlong">
@@ -149,6 +172,8 @@ function metabox_desarrollos() {
   var myLatlngPin = new google.maps.LatLng(19.702839,-101.1942387);
   <?php if(get_post_meta( get_the_ID(), 'lat', true )) {?>
   	myLatlngPin = new google.maps.LatLng(<?php echo get_post_meta( get_the_ID(), 'lat', true );?>,<?php echo get_post_meta( get_the_ID(), 'lng', true );?>);
+    myLatlng = new google.maps.LatLng(<?php echo get_post_meta( get_the_ID(), 'lat', true );?>,<?php echo get_post_meta( get_the_ID(), 'lng', true );?>);
+
   <?php } ?>
 
   var myOptions = {
@@ -217,6 +242,15 @@ function wpse_save_meta_fields( $post_id ) {
    	update_post_meta($post_id, 'lat', $_POST['lat']);
    if($_POST['lng'])
    	update_post_meta($post_id, 'lng', $_POST['lng']);
+   if($_POST['id_casa'])
+    update_post_meta($post_id, 'id_casa', $_POST['id_casa']);
+  if($_POST['ubicacion'])
+    update_post_meta($post_id, 'ubicacion', $_POST['ubicacion']);
+  if($_POST['link_carrusel'])
+    update_post_meta($post_id, 'link_carrusel', $_POST['link_carrusel']);
+  if($_POST['text_carrusel'])
+    update_post_meta($post_id, 'text_carrusel', $_POST['text_carrusel']);
+  
 
 }
 add_action( 'save_post', 'wpse_save_meta_fields' );
@@ -263,4 +297,34 @@ function ideas_permalink($permalink, $post_id, $leavename) {
         else $taxonomy_slug = 'ideas';
 
     return str_replace('%categoria-ideas%', $taxonomy_slug, $permalink);
+}
+
+
+function wpse_add_custom_meta_box_slider() {
+   add_meta_box(
+       'meta-carrusel',       // $id
+       'Link',                  // $title
+       'metabox_carrusel',  // $callback
+       'slider',                 // $page
+       'normal',                  // $context
+       'high'                     // $priority
+   );
+}
+add_action('add_meta_boxes', 'wpse_add_custom_meta_box_slider');
+
+function metabox_carrusel() {
+    global $post;
+
+    // Use nonce for verification to secure data sending
+    wp_nonce_field( basename( __FILE__ ), 'wpse_our_nonce' );
+    ?>
+
+    <!-- my custom value input -->
+    <div>
+      Texto: <input type="text" name="text_carrusel" value="<?php echo (get_post_meta( get_the_ID(), 'text_carrusel', true ));?>">
+      Link: <input type="text" name="link_carrusel" value="<?php echo (get_post_meta( get_the_ID(), 'link_carrusel', true ));?>"> <br />
+      </div>
+    <br>
+    
+    <?php
 }

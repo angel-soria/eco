@@ -55,7 +55,7 @@ $green: #649c47;
 
 .about{
 	padding:55px 0 35px;
-	h2{
+	h1{
 		size:28px;
 		color:rgba(92,92,92,1);
 		font-weight:800;
@@ -315,8 +315,9 @@ $green: #649c47;
 .relacionados{
 	padding: 0px 0 15px;
 	h2{
+		text-align:center;
 		font-size:24px;
-		text-align:left;
+		//text-align:left;
 		margin-bottom:25px;
 	}
 }

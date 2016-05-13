@@ -64,6 +64,40 @@ body {
 		  list-style: outside none none;
 		  padding: 0;
 		  margin:0 5px;
+		position: relative;
+		  ul{
+		  	-webkit-transition: all 0.35s ease;
+				transition: all 0.35s ease;
+		  	display:none;
+		  	opacity:0;
+		  	li a{
+		  		display:block;
+		  		 margin-bottom: 10px;
+		  	}
+		  }
+		  &:hover{
+		  	> ul{
+		  		opacity:1;
+		  		display: block;
+		  		position: absolute;
+			    z-index: 99;
+			    background: $light_gray;
+			    left: -27px;
+			    top: 48px;
+			    padding: 10px;
+ 
+		  	}
+			  &.menu-item-50:hover{
+			  	&:after{
+			  		content:"";
+			  		position: absolute;
+				    height: 41px;
+				        width: 184%;
+	    			left: -41%
+			  	}
+
+			  }
+		  }
 		}
 		a {
 		  	padding: 0 12px;
@@ -632,7 +666,7 @@ a.general{
     left: -60px;
 }
 .carousel-control{
-	background: white;
+	background: rgba(255,255,255,0.85);
     color: #649c47;
     height: 100px;
     bottom: 0;
@@ -726,6 +760,15 @@ a.fancybox{
 		ul{
 			li{
 				margin:0px;
+				&.menu-item-50{
+					&:hover{
+						>ul{
+							left: -20px;
+	    					top: 44px;
+						}
+					}
+				}
+				
 			}
 			a{
 				padding: 0 4px;
@@ -733,6 +776,7 @@ a.fancybox{
 
 			}
 		}
+		
 	}
 	footer {
 		.pie{

@@ -20,7 +20,8 @@ add_shortcode( 'featured-video', 'fv_do_post_video' );
 function fv_meta_register(){
 	$post_types = get_post_types(array("public" => true));
 	foreach ($post_types as $post_type) {
-		add_meta_box("fv_meta", 'Video Destacado', "fv_meta_html", $post_type, "side", "low");
+		if($post_type!='slider')
+			add_meta_box("fv_meta", 'Video Destacado', "fv_meta_html", $post_type, "side", "low");
 	}	
 		
 	wp_enqueue_style('fv_video_style', plugins_url().'/featured-video/style.css');

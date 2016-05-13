@@ -21,7 +21,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-8 col-sm-4 col-lg-3 col-ms-5">
-					<img src="<?php echo get_template_directory_uri();?>/assets/images/logo.png" alt="EcoVive D & C" class="img-responsive">
+					<a href="<?php echo get_home_url( ); ?>"><img src="<?php echo get_template_directory_uri();?>/assets/images/logo.png" alt="EcoVive D & C" class="img-responsive"></a>
 				</div>
 				<div class="col-sm-8 hidden-xs col-lg-9 col-ms-7">
 					<?php wp_nav_menu( array( 'theme_location' => 'header-menu', 'container_class' => 'header__menu' ) );?>

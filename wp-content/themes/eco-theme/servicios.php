@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
-				<h2>Mejora Continua</h2>
+				<h1>Mejora Continua</h1>
 			</div>
 		</div>
 		<div class="row row-centered">

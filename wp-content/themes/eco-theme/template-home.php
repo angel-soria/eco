@@ -7,35 +7,39 @@ get_header(); ?>
 <div class="carrusel">
 	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 	  <!-- Indicators -->
+	<?php 
+		$args = array( 'post_type' => 'slider', 'posts_per_page' => 5 );
+		$loop = new WP_Query( $args );
+		
+		
+	?>
+
 	  <ol class="carousel-indicators">
-	    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-	    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-	    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+	  	<?php for ($i=0; $i < $loop->post_count ; $i++) { 
+	  		if($i==0){
+	  			echo '<li data-target="#carousel-example-generic" data-slide-to="'.$i.'" class="active"></li>';	  			
+	  		}else{
+	  			echo '<li data-target="#carousel-example-generic" data-slide-to="'.$i.'"></li>';	
+	  		}
+	  	} ?>
 	  </ol>
 	 
 	  <!-- Wrapper for slides -->
 	  <div class="carousel-inner">
-	    <div class="item active">
-	      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/slider.jpg" alt="...">
-	      <div class="carousel-caption">
-	      	<h3>Si tu puedes imaginarlo, nosotros podemos construirlo</h3>
-	      	<a href="#" class="general">Ver desarrollo</a>	
-	      </div>
-	    </div>
-	    <div class="item">
-	      <img src="http://placehold.it/1440x797" alt="...">
-	      <div class="carousel-caption">
-	      	<h3>Si tu puedes imaginarlo, nosotros podemos construirlo</h3>
-	      	<a href="#" class="general">Ver desarrollo</a>
-	      </div>
-	    </div>
-	    <div class="item">
-	      <img src="http://placehold.it/1440x797" alt="...">
-	      <div class="carousel-caption">
-	      	<h3>Si tu puedes imaginarlo, nosotros podemos construirlo</h3>
-	      	<a href="#" class="general">Ver desarrollo</a>
-	      </div>
-	    </div>
+	  	<?php 
+	  		$count=0;
+	  		while ( $loop->have_posts() ) : $loop->the_post();
+	  	?>	
+			<div class="item <?php if($count==0) echo 'active'; ?>">
+		      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/slider.jpg" alt="...">
+		      <div class="carousel-caption">
+		      	<h3><?php echo get_the_title( ); ?></h3>
+		      	<a href="<?php echo urldecode(get_post_meta( get_the_ID(), 'link_carrusel', true ));?>" class="general"><?php echo (get_post_meta( get_the_ID(), 'text_carrusel', true ));?></a>	
+		      </div>
+		    </div>  
+		<?php
+			endwhile;
+	  	?>
 	  </div>
 	</div> <!-- Carousel -->
 </div>

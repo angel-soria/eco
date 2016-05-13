@@ -1,5 +1,6 @@
 <?php get_header();  ?>
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+<div class="bg-ficha">
 <div class="container desarrollos-ficha">
 	<div class="row">
 		<div class="col-xs-12 col-sm-8">
@@ -50,7 +51,7 @@
 							<div class="contenido">
 								<h1><?php the_title();?></h1>
 								<?php $term_list = wp_get_post_terms($post->ID, 'categoria-desarrollos', array("fields" => "all"));  ?>
-								<p>
+								<p class="breadcrum-ficha">
 									<a href="<?php echo get_home_url( ); ?>">Inicio</a> >
 									<a href="<?php echo get_home_url( ); ?>/desarrollos/">Desarrollos</a> >
 								<?php foreach ( $term_list as $term ) {
@@ -126,6 +127,7 @@
 					<div class="contenido">
 						<h3>Ubicación</h3>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia impedit alias, quam iure at excepturi velit, veritatis soluta. Cum, sequi atque vitae soluta vero saepe illum at ut quisquam minima.</p>
+						<div id="map_canvas" style="width:100%; height:320px"></div>
 					</div>							
 				</div>
 			</div>
@@ -147,19 +149,20 @@
 
 
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm-4 col-xs-12">
 			<div class="form">
 				<h3>Te interesa esta propiedad</h3>
 						<form action="" method="post">
 								<label for="Nambe">¿Cuál es su nombre?</label> <input type="text" name="nombre" />
 								<label for="Nambe">¿Cuál es su correo?</label> <input type="text" name="corre" />
 								<label for="Nambe">¿Cuál es su teléfono?</label> <input type="text" name="telefono" />
-								<label for="Nambe">¿Cuál es su mensaje?</label> <textarea name="Comentario" id="" cols="30" rows="10"></textarea>
+								<label for="Nambe">¿Cuál es su mensaje?</label> <textarea name="Comentario" id="" cols="30" rows="7"></textarea>
 								<button type="submit" >Enviar mensaje</button>
 							</form>
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 
 
@@ -223,4 +226,8 @@
 		</div>
 	</div>
 </div>
+<script>
+	var lat = <?php echo get_post_meta( get_the_ID(), 'lat', true );?>;
+	var lng = <?php echo get_post_meta( get_the_ID(), 'lng', true );?> 
+</script>
 <?php get_footer(); ?>
