@@ -52,14 +52,20 @@ get_header(); ?>
 		<div class="row">
 
 		<?php if($_SESSION['tipo-vista'] === 'list'){ ?>
-		<?php for ($i=0; $i < 6; $i++) { ?>
-			<a href="#">
+
+		<?php 
+		$paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
+			$args = array( 'post_type' => 'desarrollos',  'paged' => $paged);
+			$loop = new WP_Query( $args );
+			while ( $loop->have_posts() ) : $loop->the_post();
+		?>
+			<a href="<?php echo get_the_permalink(); ?>">
 			<div class="col-xs-12">
 				<div class="ficha list-type">
 					<div class="row">
 						<div class="col-sm-5 col-md-4 col-ms-4">
 							<figure class="snip1451">
-							  <img src="<?php echo get_template_directory_uri(); ?>/assets/images/casa-2.jpg" alt="" class="img-responsive" />
+							  <?php if ( has_post_thumbnail() ) { the_post_thumbnail('thumb-desarrollo');}?>
 							  <figcaption>
 							    <div><i class="ion-ios-home-outline"></i></div>
 							  </figcaption>
@@ -67,34 +73,35 @@ get_header(); ?>
 						</div>
 						<div class="col-sm-7 col-md-5">
 							<div class="contenido">
-								<p>Terreno</p>
-								<h3>Casa en Lomas del Punhuato, Morelia</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia impedit alias, quam iure at excepturi velit, veritatis soluta. Cum, sequi atque vitae soluta vero saepe illum at ut quisquam minima.</p>
+								<?php $term_list = wp_get_post_terms($post->ID, 'categoria-desarrollos', array("fields" => "all"));  
+									foreach ( $term_list as $term ) {
+				        				echo '<p>'. $term->name.'</p>' ;
+				    				} 
+			    				?>
+								<h3><?php echo get_the_title( ); ?></h3>
+								<p><?php echo get_the_excerpt( ); ?></p>
 							</div>							
 						</div>
 						<div class="col-sm-12 col-md-3">
 							<ul class="caracteristicas">
 								<li>
+									<span class="number"><?php echo (get_post_meta( get_the_ID(), 'recamaras', true ));?></span>
 									<i class="icon-full-bed"></i>
-									<span class="number">5</span>									
 									<span class="texto">Recámaras</span>
 								</li>
 								<li>
+									<span class="number"><?php echo (get_post_meta( get_the_ID(), 'banos', true ));?></span>
 									<i class="icon-toilet"></i>
-									<span class="number">2</span>
-									
 									<span class="texto">Baños</span>
 								</li>
 								<li>
+									<span class="number"><?php echo (get_post_meta( get_the_ID(), 'estacionamiento', true ));?></span>
 									<i class="icon-car"></i>
-									<span class="number">3</span>
-									
 									<span class="texto">Estacionamiento</span>
 								</li>
 								<li>
+									<span class="number"><?php echo (get_post_meta( get_the_ID(), 'terreno', true ));?> m<sup>2</sup> </span>
 									<i class="icon-rectngulo-5"></i>
-									<span class="number">500 m<sup>2</sup> </span>
-									
 									<span class="texto">Terreno</span>
 								</li>
 							</ul>							
@@ -103,45 +110,56 @@ get_header(); ?>
 				</div>
 			</div>
 			</a>
-		<?php } ?>
+		<?php
+			endwhile;
+	  	?>
 		
 		<?php } else{ ?>
 
 
 
-		<?php for ($i=0; $i < 6; $i++) { ?>
+		<?php 
+			$paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
+			$args = array( 'post_type' => 'desarrollos',  'paged' => $paged);
+			$loop = new WP_Query( $args );
+			while ( $loop->have_posts() ) : $loop->the_post();
+		?>
 			
 			<div class="col-sm-6 col-md-4 col-ms-6 col-xs-12 col-centered special-padding">
 				<div class="ficha">
-					<a href="#">
+					<a href="<?php echo get_the_permalink(); ?>">
 						<figure class="snip1451">
-						  <img src="<?php echo get_template_directory_uri(); ?>/assets/images/casa.jpg" alt="" class="img-responsive" />
+						  <?php if ( has_post_thumbnail() ) { the_post_thumbnail('thumb-desarrollo');}?>
 						  <figcaption>
 						    <div><i class="ion-ios-home-outline"></i></div>
 						  </figcaption>
 						</figure>
 						<div class="contenido">
-							<p>Terreno</p>
-							<h3>Casa en Lomas del Punhuato, Morelia</h3>
+							<?php $term_list = wp_get_post_terms($post->ID, 'categoria-desarrollos', array("fields" => "all"));  
+								foreach ( $term_list as $term ) {
+			        			echo '<p>'. $term->name.'</p>' ;
+			    				} 
+			    			?>
+							<h3><?php echo get_the_title( ); ?></h3>
 						</div>
 						<ul class="caracteristicas">
 							<li>
-								<span class="number">5</span>
+								<span class="number"><?php echo (get_post_meta( get_the_ID(), 'recamaras', true ));?></span>
 								<i class="icon-full-bed"></i>
 								<span class="texto">Recámaras</span>
 							</li>
 							<li>
-								<span class="number">2</span>
+								<span class="number"><?php echo (get_post_meta( get_the_ID(), 'banos', true ));?></span>
 								<i class="icon-toilet"></i>
 								<span class="texto">Baños</span>
 							</li>
 							<li>
-								<span class="number">3</span>
+								<span class="number"><?php echo (get_post_meta( get_the_ID(), 'estacionamiento', true ));?></span>
 								<i class="icon-car"></i>
 								<span class="texto">Estacionamiento</span>
 							</li>
 							<li>
-								<span class="number">500 m<sup>2</sup> </span>
+								<span class="number"><?php echo (get_post_meta( get_the_ID(), 'terreno', true ));?> m<sup>2</sup> </span>
 								<i class="icon-rectngulo-5"></i>
 								<span class="texto">Terreno</span>
 							</li>
@@ -149,7 +167,10 @@ get_header(); ?>
 					</a>
 				</div>
 			</div>
-		<?php } ?>
+		<?php
+			endwhile;
+			wp_reset_query();
+	  	?>
 		
 		<?php } //else vista?>
 
@@ -157,21 +178,35 @@ get_header(); ?>
 
 
 
-
+		<?php if($loop->max_num_pages > 1){ ?>
 		<div class="row ">
 			<div class="col-xs-12">
 				<div class="content-pagination">
-					<ul class="pagination">
-					  <li><a href="#">1</a></li>
-					  <li><a href="#">2</a></li>
-					  <li><a href="#">3</a></li>
-					  <li><a href="#">4</a></li>
-					  <li><a href="#">5</a></li>
-					</ul>
+					<?php
+						$big = 999999999; // need an unlikely integer
+
+						$pages = paginate_links( array(
+						        'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+						        'format' => '?paged=%#%',
+						        'current' => max( 1, get_query_var('paged') ),
+						        'total' => $loop->max_num_pages,
+						        'type'  => 'array',
+						    ) );
+						    if( is_array( $pages ) ) {
+						        $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
+						        echo '<ul class="pagination">';
+						        foreach ( $pages as $page ) {
+						                echo "<li>$page</li>";
+						        }
+						       echo '</ul>';
+						        }
+					?>	
 					
 				</div>
 			</div>
 		</div>
+		<?php } ?>
+
 	</div>
 </div>
 

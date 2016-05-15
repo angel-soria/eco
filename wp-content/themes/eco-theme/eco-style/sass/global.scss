@@ -139,6 +139,7 @@ body {
 			}
 
 		}
+		
 	}
 }
 
@@ -707,6 +708,101 @@ a.fancybox{
 		}
 	}
 }
+.cuatro{
+	text-align:center;
+	img{
+		margin-bottom:35px;
+	}
+	a{
+		max-width:250px;
+	}
+}
+
+.contacto-pagina{
+	background-image: url("../../assets/images/contacto.jpg");
+	text-align:left;
+	padding:0px;
+	.grreen{
+		background-color:#98ac94;
+		padding: 40px 0px 30px 45px;
+	}
+	.contenido{
+		color:white;
+		line-height:1;
+		margin-top:35px;
+		p{
+			margin-bottom:5px;
+		}
+	}
+	h1{
+		color: white;
+		text-align:left;
+		margin-top:40px;
+		margin-bottom:25px;
+	}
+	label{
+					display: block;
+					padding:0px;
+					margin: 0px 0px 12px;
+					color:white;
+					font-size: 25px;
+					font-weight:500;
+				}
+				input, textarea{
+					display: block;
+					border:none;
+					padding:12px;
+					width:100%;
+					margin-bottom:25px;
+					resize:none;
+				}
+				button{
+					background: #558b3e; 			  	
+				  	display: inline-block;
+				  	position: relative;
+				  	-webkit-transition: all 0.3s;
+	  				transition: all 0.3s;
+	  				border:none;
+					width:100%;
+					color: white;
+					text-align:center;
+					padding:15px;
+					text-transform:uppercase;
+					font-weight:400;
+					font-size:18px;
+					&:after {
+					  content: "";
+					  position: absolute;
+					  height: 100%;
+					  left: 50%;
+					  right: 50%;
+					  border-radius: inherit;
+					  background-color: rgba(255, 255,255, 0.1);
+					  -webkit-transition: all 0.3s;
+					  transition: all 0.3s;
+					  top:0;
+					}
+					&:before {
+					  content: "";
+					  position: absolute;
+					  height: 100%;
+					  width: 100%;
+					  left: 0;
+					  top: 0;
+					  -webkit-transform: translateY(5px);
+					  transform: translateY(5px);
+					  background-color: inherit;
+					  border-radius: 10px;
+					  z-index: -1;
+					  box-shadow: inset 0 -6px 10px rgba(0, 0, 0, 0.75);
+					}
+					&:hover:after {
+					  left: 0;
+					  right: 0;				  
+					}
+				}
+} 
+
 @media only screen and (min-width : 320px) {
 
 }
@@ -800,6 +896,9 @@ a.fancybox{
 		}
 	}
 }
+
+
+
 @media only screen and (max-width : 768px) {
 	.banner h3{
 		font-size:30px;
@@ -837,6 +936,14 @@ footer {
 	}
 	footer .contacto .info_contacto address p {
     	font-size: 15px;
+	}
+	.contacto-pagina .grreen {
+   		background-color: #98ac94;
+    	padding: 32px 15px 30px 15px;
+	}
+	.contacto-pagina{
+		background-image:none;
+		background-color: #98ac94;
 	}
 }
 @media only screen and (max-width : 480px) {

@@ -3,7 +3,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
-					<h3>Trabajamos con las más nuevas y ecologicas tecnologías</h3>
+					<h3><?php echo (get_post_meta( 11, 'title_socios', true ));?></h3>
 				</div>
 			</div>
 			<div class="row special-p row-centered">
@@ -29,9 +29,7 @@
 					<div class="info_contacto">
 						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-footer.png" alt="EcoVive D&C" class="img-responsive">
 						<address>
-							<p>01 443 3 24 77 70 ext. 201</p>
-							<p>Av. Acueducto #95 Int. 301 Colonia Vasco de Quiroga, C.P. 58230 Morelia Michoacán</p>
-							<p>contacto@ecovivedyc.com</p>
+							<?php echo (get_post_meta( 11, 'Contacto_footer', true ));?>
 						</address>						
 					</div>
 				</div>
@@ -61,22 +59,22 @@
 					<div class="pie__redes">
 						<ul>
 							<li>
-								<a href="#">
+								<a href="<?php echo urldecode(get_post_meta( 11, 'r_face', true ));?>"" target="_blank">
 									<i class="fa fa-facebook" aria-hidden="true"></i>
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="<?php echo urldecode(get_post_meta( 11, 'r_twt', true ));?>" target="_blank">
 									<i class="fa fa-twitter" aria-hidden="true"></i>
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="<?php echo urldecode(get_post_meta( 11, 'r_you', true ));?>" target="_blank">
 									<i class="fa fa-instagram" aria-hidden="true"></i>
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="<?php echo urldecode(get_post_meta( 11, 'r_ins', true ));?>" target="_blank">
 									<i class="fa fa-youtube" aria-hidden="true"></i>
 								</a>
 							</li>

@@ -2,6 +2,17 @@
 add_theme_support( 'post-thumbnails' );
 add_image_size( 'ideas-slider', 1315, 645 , true);
 add_image_size( 'home-slider', 1440, 797 , true);
+add_image_size( 'thumb-desarrollo', 454, 200 , true);
+add_image_size( 'thumb-ideas', 578, 278 , true);
+add_image_size( 'thumb-blog', 416, 584 , true);
+add_image_size( 'thumb-blog-dos', 868, 223 , true);
+
+
+
+function new_excerpt_length($length) {
+  return 24;
+}
+add_filter('excerpt_length', 'new_excerpt_length');
 
 // Register style sheet.
 add_action( 'wp_enqueue_scripts', 'register_plugin_styles' );
@@ -101,6 +112,17 @@ function create_posttype() {
        'supports' => array( 'title', 'thumbnail')
     )
   );
+  register_post_type( 'paquetes',
+    array(
+      'labels' => array(
+        'name' => __( 'Paquetes' ),
+        'singular_name' => __( 'Paquete' )
+      ),
+      'public' => true,
+      'has_archive' => false,
+      'supports' => array( 'title')
+    )
+  );
 }
 
 add_action( 'init', 'create_book_tax' );
@@ -148,15 +170,15 @@ function metabox_desarrollos() {
 
     <!-- my custom value input -->
     <div>
-      ID Casa: <input type="text" name="id_casa" value="<?php echo (get_post_meta( get_the_ID(), 'id_casa', true ));?>">
-	    Recámaras: <input type="text" name="recamaras" value="<?php echo (get_post_meta( get_the_ID(), 'recamaras', true ));?>"> <br />
+      ID Casa: <input type="text" name="id_casa" value="<?php echo (get_post_meta( get_the_ID(), 'id_casa', true ));?>"> <br /> 
+	    Recámaras: <input type="text" name="recamaras" value="<?php echo (get_post_meta( get_the_ID(), 'recamaras', true ));?>"> <br /> 
 	    Baños: <input type="text" name="banos" value="<?php echo (get_post_meta( get_the_ID(), 'banos', true ));?>"> <br />
 	    Estacionamieto: <input type="text" name="estacionamiento" value="<?php echo (get_post_meta( get_the_ID(), 'estacionamiento', true ));?>"> <br />
 	    Terreno: <input type="text" name="terreno" value="<?php echo (get_post_meta( get_the_ID(), 'terreno', true ));?>"> m<sup>2</sup> <br />
     </div>
     <br>
     <h3>Ubicación</h3>
-    <input type="text" name="ubicacion" value="<?php echo (get_post_meta( get_the_ID(), 'ubicacion', true ));?>">
+    <input type="text" name="ubicacion" value="<?php echo (get_post_meta( get_the_ID(), 'ubicacion', true ));?>" style="width: 100%;"><br /><br />
     <div id="map_canvas" style="width:100%; height:400px"></div>
 
   <div id="latlong">
@@ -250,6 +272,36 @@ function wpse_save_meta_fields( $post_id ) {
     update_post_meta($post_id, 'link_carrusel', $_POST['link_carrusel']);
   if($_POST['text_carrusel'])
     update_post_meta($post_id, 'text_carrusel', $_POST['text_carrusel']);
+  if($_POST['asesoria'])
+    update_post_meta($post_id, 'asesoria', $_POST['asesoria']);
+  if($_POST['construccion'])
+    update_post_meta($post_id, 'construccion', $_POST['construccion']);
+  if($_POST['ventas'])
+    update_post_meta($post_id, 'ventas', $_POST['ventas']);
+   if($_POST['title_asesoria'])
+    update_post_meta($post_id, 'title_asesoria', $_POST['title_asesoria']);
+  if($_POST['title_construccion'])
+    update_post_meta($post_id, 'title_construccion', $_POST['title_construccion']);
+  if($_POST['title_ventas'])
+    update_post_meta($post_id, 'title_ventas', $_POST['title_ventas']);
+  if($_POST['paquete_opciones'])
+    update_post_meta($post_id, 'paquete_opciones', $_POST['paquete_opciones']);
+  if($_POST['title_desarrollos'])
+    update_post_meta($post_id, 'title_desarrollos', $_POST['title_desarrollos']);
+  if($_POST['title_paquetes'])
+    update_post_meta($post_id, 'title_paquetes', $_POST['title_paquetes']);
+  if($_POST['title_socios'])
+    update_post_meta($post_id, 'title_socios', $_POST['title_socios']);
+   if($_POST['Contacto_footer'])
+    update_post_meta($post_id, 'Contacto_footer', $_POST['Contacto_footer']);
+   if($_POST['r_face'])
+    update_post_meta($post_id, 'r_face', $_POST['r_face']);
+   if($_POST['r_twt'])
+    update_post_meta($post_id, 'r_twt', $_POST['r_twt']);
+   if($_POST['r_you'])
+    update_post_meta($post_id, 'r_you', $_POST['r_you']);
+  if($_POST['r_ins'])
+    update_post_meta($post_id, 'r_ins', $_POST['r_ins']);
   
 
 }
@@ -327,4 +379,98 @@ function metabox_carrusel() {
     <br>
     
     <?php
+}
+
+add_action('admin_init','my_meta_init');
+function my_meta_init()
+{
+  $post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'] ;
+  $template_file = get_post_meta($post_id,'_wp_page_template',TRUE);
+  // check for a template type
+  if ($template_file == 'template-home.php')
+  {
+  add_meta_box('home_metas', 'Datos extra', 'meta_home', 'page', 'normal', 'high');
+  }
+  add_meta_box(
+       'meta-paquetes',       // $id
+       'Opciones',                  // $title
+       'metabox_paquetes',  // $callback
+       'paquetes',                 // $page
+       'normal',                  // $context
+       'high'                     // $priority
+   );
+
+}
+
+function meta_home() {
+    global $post;
+
+    // Use nonce for verification to secure data sending
+    wp_nonce_field( basename( __FILE__ ), 'wpse_our_nonce' );
+    ?>
+
+    <!-- my custom value input -->
+    <div>
+    <h4>Servicios</h4>
+     <input type="text" name="title_asesoria" value="<?php echo (get_post_meta( get_the_ID(), 'title_asesoria', true ));?>"> <br /><br />
+      <textarea name="asesoria" style="width: 100%; resize: none;"><?php echo (get_post_meta( get_the_ID(), 'asesoria', true ));?></textarea> 
+      
+      <br /><br />
+      <input type="text" name="title_construccion" value="<?php echo (get_post_meta( get_the_ID(), 'title_construccion', true ));?>"> <br /><br />
+      <textarea name="construccion" style="width: 100%; resize: none;"><?php echo (get_post_meta( get_the_ID(), 'construccion', true ));?></textarea> <br /><br />
+      <input type="text" name="title_ventas" value="<?php echo (get_post_meta( get_the_ID(), 'title_ventas', true ));?>"> <br /><br />
+      <textarea name="ventas" style="width: 100%; resize: none;"><?php echo (get_post_meta( get_the_ID(), 'ventas', true ));?></textarea> <br /><br />
+      </div>
+    <br>
+    <h4>Titulos</h4>
+    <input type="text" name="title_desarrollos" style="width:100%;" value="<?php echo (get_post_meta( get_the_ID(), 'title_desarrollos', true ));?>"> <br /><br />
+    <input type="text" name="title_paquetes" style="width:100%;" value="<?php echo (get_post_meta( get_the_ID(), 'title_paquetes', true ));?>"> <br /><br />
+    <input type="text" name="title_socios" style="width:100%;" value="<?php echo (get_post_meta( get_the_ID(), 'title_socios', true ));?>"> <br /><br />
+     <h4>Contacto</h4>
+     <textarea name="Contacto_footer" rows="5" style="width: 100%; resize: none;"><?php echo (get_post_meta( get_the_ID(), 'Contacto_footer', true ));?></textarea> <br /><br />
+     <h4>Redes sociales</h4>
+     Facebook: <input type="text" name="r_face" value="<?php echo (get_post_meta( get_the_ID(), 'r_face', true ));?>"> <br /><br />
+     Twitter: <input type="text" name="r_twt" value="<?php echo (get_post_meta( get_the_ID(), 'r_twt', true ));?>"> <br /><br />
+     Youtube: <input type="text" name="r_you" value="<?php echo (get_post_meta( get_the_ID(), 'r_you', true ));?>"> <br /><br />
+     Instragram: <input type="text" name="r_ins" value="<?php echo (get_post_meta( get_the_ID(), 'r_ins', true ));?>"> <br /><br />
+      
+    
+    <?php
+}
+function metabox_paquetes() {
+    global $post;
+
+    // Use nonce for verification to secure data sending
+    wp_nonce_field( basename( __FILE__ ), 'wpse_our_nonce' );
+    ?>
+
+    <!-- my custom value input -->
+    <div>
+     Opciones: <br /><br />
+      <textarea name="paquete_opciones" style="width: 100%; resize: none;" rows="15"><?php echo (get_post_meta( get_the_ID(), 'paquete_opciones', true ));?></textarea> <br /><br />
+      </div>
+    <br>
+    
+    <?php
+}
+
+add_filter( 'rewrite_rules_array','my_insert_rewrite_rules' );
+add_action( 'wp_loaded','my_flush_rules' );    
+function my_flush_rules(){
+    $rules = get_option( 'rewrite_rules' );
+            global $wp_rewrite;
+    $wp_rewrite->flush_rules();
+} 
+
+// Adding a new rule    
+function my_insert_rewrite_rules( $rules )    
+{
+    $newrules = array();
+    //$newrules['desarrollos/?$'] = 'index.php?post_type=desarrollos';
+    $newrules['desarrollos/page/?([0-9]{1,})/?$'] = 'index.php?page_id=22&paged=$matches[1]';
+    $newrules['desarrollos/(.+?)/page/?([0-9]{1,})/?$'] = 'index.php?categoria-desarrollos=$matches[1]&paged=$matches[2]';
+    $newrules['ideas/page/?([0-9]{1,})/?$'] = 'index.php?page_id=37&paged=$matches[1]';
+    $newrules['ideas/(.+?)/page/?([0-9]{1,})/?$'] = 'index.php?categoria-ideas=$matches[1]&paged=$matches[2]';
+    //print_r($rules);
+    return $newrules + $rules;
 }

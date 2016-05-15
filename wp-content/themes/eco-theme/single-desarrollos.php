@@ -57,7 +57,7 @@
 								<?php foreach ( $term_list as $term ) {
 			        					echo '<a href="' . esc_url( get_term_link( $term ) ) . '">' . $term->name . '</a> >';
 			    					}  ?>
-			    					ID 4834 
+			    					ID <?php echo (get_post_meta( get_the_ID(), 'id_casa', true ));?> 
 
 			    				</p>
 								
@@ -81,31 +81,31 @@
 				<div class="col-sm-7 col-md-8">
 					<div class="contenido">
 						<h3>Descripción</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia impedit alias, quam iure at excepturi velit, veritatis soluta. Cum, sequi atque vitae soluta vero saepe illum at ut quisquam minima.</p>
+						<?php the_content();?>
 					</div>							
 				</div>
 				<div class="col-sm-5 col-md-4">
 					<ul class="caracteristicas">
 						<li>
 							<i class="icon-full-bed"></i>
-							<span class="number">5</span>									
+							<span class="number"><?php echo (get_post_meta( get_the_ID(), 'recamaras', true ));?></span>									
 							<span class="texto">Recámaras</span>
 						</li>
 						<li>
 							<i class="icon-toilet"></i>
-							<span class="number">2</span>
+							<span class="number"><?php echo (get_post_meta( get_the_ID(), 'banos', true ));?></span>
 							
 							<span class="texto">Baños</span>
 						</li>
 						<li>
 							<i class="icon-car"></i>
-							<span class="number">3</span>
+							<span class="number"><?php echo (get_post_meta( get_the_ID(), 'estacionamiento', true ));?></span>
 							
 							<span class="texto">Estacionamiento</span>
 						</li>
 						<li>
 							<i class="icon-rectngulo-5"></i>
-							<span class="number">500 m<sup>2</sup> </span>
+							<span class="number"><?php echo (get_post_meta( get_the_ID(), 'terreno', true ));?> m<sup>2</sup> </span>
 							
 							<span class="texto">Terreno</span>
 						</li>
@@ -126,7 +126,7 @@
 				<div class="col-sm-12 ">
 					<div class="contenido">
 						<h3>Ubicación</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia impedit alias, quam iure at excepturi velit, veritatis soluta. Cum, sequi atque vitae soluta vero saepe illum at ut quisquam minima.</p>
+						<p><?php echo (get_post_meta( get_the_ID(), 'ubicacion', true ));?></p>
 						<div id="map_canvas" style="width:100%; height:320px"></div>
 					</div>							
 				</div>
@@ -182,39 +182,47 @@
 			</div>
 		</div>
 		<div class="row row-centered">
-		<?php for ($i=0; $i < 3; $i++) { ?>
+		<?php 
+			$args = array( 'post_type' => 'desarrollos', 'posts_per_page' => 3 , 'post__not_in'=> array(get_the_ID()) ,'orderby'=>'rand');
+			$loop = new WP_Query( $args );
+			while ( $loop->have_posts() ) : $loop->the_post();
+		?>
 			
 			<div class="col-sm-6 col-md-4 col-ms-6 col-xs-12 col-centered special-padding">
 				<div class="ficha">
-					<a href="#">
+					<a href="<?php echo get_the_permalink(); ?>">
 						<figure class="snip1451">
-						  <img src="<?php echo get_template_directory_uri(); ?>/assets/images/casa.jpg" alt="" class="img-responsive" />
+						  <?php if ( has_post_thumbnail() ) { the_post_thumbnail('thumb-desarrollo');}?>
 						  <figcaption>
 						    <div><i class="ion-ios-home-outline"></i></div>
 						  </figcaption>
 						</figure>
 						<div class="contenido">
-							<p>Terreno</p>
-							<h3>Casa en Lomas del Punhuato, Morelia</h3>
+							<?php $term_list = wp_get_post_terms($post->ID, 'categoria-desarrollos', array("fields" => "all"));  
+								foreach ( $term_list as $term ) {
+			        			echo '<p>'. $term->name.'</p>' ;
+			    				} 
+			    			?>
+							<h3><?php echo get_the_title( ); ?></h3>
 						</div>
 						<ul class="caracteristicas">
 							<li>
-								<span class="number">5</span>
+								<span class="number"><?php echo (get_post_meta( get_the_ID(), 'recamaras', true ));?></span>
 								<i class="icon-full-bed"></i>
 								<span class="texto">Recámaras</span>
 							</li>
 							<li>
-								<span class="number">2</span>
+								<span class="number"><?php echo (get_post_meta( get_the_ID(), 'banos', true ));?></span>
 								<i class="icon-toilet"></i>
 								<span class="texto">Baños</span>
 							</li>
 							<li>
-								<span class="number">3</span>
+								<span class="number"><?php echo (get_post_meta( get_the_ID(), 'estacionamiento', true ));?></span>
 								<i class="icon-car"></i>
 								<span class="texto">Estacionamiento</span>
 							</li>
 							<li>
-								<span class="number">500 m<sup>2</sup> </span>
+								<span class="number"><?php echo (get_post_meta( get_the_ID(), 'terreno', true ));?> m<sup>2</sup> </span>
 								<i class="icon-rectngulo-5"></i>
 								<span class="texto">Terreno</span>
 							</li>
@@ -222,7 +230,9 @@
 					</a>
 				</div>
 			</div>
-		<?php } ?>
+		<?php
+			endwhile;
+	  	?>
 		</div>
 	</div>
 </div>

@@ -12,6 +12,10 @@
   margin-top: 20px;
 }
 /* line 11, ../sass/desarrollos.scss */
+.single-desarrollos .desarrollos-ficha .ficha .contenido h3 {
+  min-height: 44px;
+}
+/* line 14, ../sass/desarrollos.scss */
 .single-desarrollos .desarrollos-ficha .ficha .contenido p.breadcrum-ficha {
   color: #558b3e;
   font-weight: 900;
@@ -19,45 +23,45 @@
   text-transform: uppercase;
   margin-top: -5px;
 }
-/* line 17, ../sass/desarrollos.scss */
+/* line 20, ../sass/desarrollos.scss */
 .single-desarrollos .desarrollos-ficha .ficha .contenido p.breadcrum-ficha a {
   color: #558b3e;
 }
-/* line 19, ../sass/desarrollos.scss */
+/* line 22, ../sass/desarrollos.scss */
 .single-desarrollos .desarrollos-ficha .ficha .contenido p.breadcrum-ficha a:hover {
   text-decoration: underline;
 }
-/* line 25, ../sass/desarrollos.scss */
+/* line 28, ../sass/desarrollos.scss */
 .single-desarrollos .desarrollos-ficha .ficha .compartir {
   margin-top: 30px;
 }
-/* line 29, ../sass/desarrollos.scss */
+/* line 32, ../sass/desarrollos.scss */
 .single-desarrollos .desarrollos-ficha .ficha:hover h1, .single-desarrollos .desarrollos-ficha .ficha:hover h2, .single-desarrollos .desarrollos-ficha .ficha:hover h3 {
   color: #5c5c5c;
 }
-/* line 35, ../sass/desarrollos.scss */
+/* line 38, ../sass/desarrollos.scss */
 .single-desarrollos .bg-ficha {
   background-size: cover;
   background-image: url("../../assets/images/textura-2.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-/* line 41, ../sass/desarrollos.scss */
+/* line 44, ../sass/desarrollos.scss */
 .single-desarrollos .desarrollos-ficha .list-type ul li span.number {
   min-width: initial;
 }
-/* line 44, ../sass/desarrollos.scss */
+/* line 47, ../sass/desarrollos.scss */
 .single-desarrollos .relacionados {
   padding-top: 30px;
 }
-/* line 47, ../sass/desarrollos.scss */
+/* line 50, ../sass/desarrollos.scss */
 .single-desarrollos .form {
   background: #98ac94;
   color: white;
   padding: 22px 22px;
   position: absolute;
 }
-/* line 54, ../sass/desarrollos.scss */
+/* line 57, ../sass/desarrollos.scss */
 .single-desarrollos .form h3 {
   color: white;
   font-weight: 800;
@@ -66,7 +70,7 @@
   text-transform: uppercase;
   margin-bottom: 12px;
 }
-/* line 62, ../sass/desarrollos.scss */
+/* line 65, ../sass/desarrollos.scss */
 .single-desarrollos .form label {
   display: block;
   padding: 0px;
@@ -75,7 +79,7 @@
   font-size: 20px;
   font-weight: 500;
 }
-/* line 70, ../sass/desarrollos.scss */
+/* line 73, ../sass/desarrollos.scss */
 .single-desarrollos .form input, .single-desarrollos .form textarea {
   display: block;
   border: none;
@@ -84,7 +88,7 @@
   margin-bottom: 12px;
   resize: none;
 }
-/* line 78, ../sass/desarrollos.scss */
+/* line 81, ../sass/desarrollos.scss */
 .single-desarrollos .form button {
   background: #558b3e;
   display: inline-block;
@@ -100,7 +104,7 @@
   font-weight: 400;
   font-size: 14px;
 }
-/* line 92, ../sass/desarrollos.scss */
+/* line 95, ../sass/desarrollos.scss */
 .single-desarrollos .form button:after {
   content: "";
   position: absolute;
@@ -113,7 +117,7 @@
   transition: all 0.3s;
   top: 0;
 }
-/* line 104, ../sass/desarrollos.scss */
+/* line 107, ../sass/desarrollos.scss */
 .single-desarrollos .form button:before {
   content: "";
   position: absolute;
@@ -128,20 +132,20 @@
   z-index: -1;
   box-shadow: inset 0 -6px 10px rgba(0, 0, 0, 0.75);
 }
-/* line 118, ../sass/desarrollos.scss */
+/* line 121, ../sass/desarrollos.scss */
 .single-desarrollos .form button:hover:after {
   left: 0;
   right: 0;
 }
 
 @media only screen and (max-width: 992px) {
-  /* line 128, ../sass/desarrollos.scss */
+  /* line 131, ../sass/desarrollos.scss */
   .single-desarrollos .desarrollos-ficha .list-type ul {
     text-align: left;
   }
 }
 @media only screen and (max-width: 767px) {
-  /* line 136, ../sass/desarrollos.scss */
+  /* line 139, ../sass/desarrollos.scss */
   .single-desarrollos .form {
     position: relative;
     top: 0 !important;

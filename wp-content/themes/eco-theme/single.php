@@ -79,25 +79,42 @@
 			</div>
 		</div>
 		<div class="row">
-		<?php for ($i=0; $i < 2; $i++) { ?>
-			
+		<?php 
+			$args = array(  'posts_per_page' => 2 , 'post__not_in'=> array(get_the_ID()) ,'orderby'=>'rand');
+			$loop = new WP_Query( $args );
+			while ( $loop->have_posts() ) : $loop->the_post();
+		?>
+			 
+
 			<div class="col-sm-6 col-md-6 col-ms-6 col-xs-12 col-centered special-padding">
 				<div class="ficha">
-					<a href="#">
+					<a href="<?php echo get_the_permalink(); ?>">
 						<figure class="snip1451">
-						  <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ideas.jpg" alt="" class="img-responsive" />
+						   <?php if ( has_post_thumbnail() ) { the_post_thumbnail('thumb-ideas');}?>
 						  <figcaption>
 						    <div><i class="ion-lightbulb"></i></div>
 						  </figcaption>
 						</figure>
 						<div class="contenido">
-							<p>Terreno</p>
-							<h3>Casa en Lomas del Punhuato, Morelia</h3>
+							<?php 
+								$categories=get_the_category(get_the_ID());
+								if ( ! empty( $categories ) ) {
+								    foreach( $categories as $category ) {
+								        $output .= esc_html( $category->name ) . $separator;
+								    }
+								}
+			        			echo '<p>'. $output.'</p>' ;
+			    				 
+			    			?>
+							<h3><?php echo get_the_title( ); ?></h3>
 						</div>
 					</a>
 				</div>
 			</div>
-		<?php } ?>
+		<?php
+			endwhile;
+	  	?>
+		
 		</div>
 	</div>
 </div>
